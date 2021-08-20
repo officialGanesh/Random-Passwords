@@ -1,5 +1,5 @@
 
-console.log("Random Passwords in javascdript 🚀")
+console.log("Random Passwords in javascript 🚀")
 
 let lowercase_alphabets = 'abcdefghijklmnopqrstuvwxyz';
 let uppercase_alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -16,5 +16,24 @@ function generateRandomPasswords(str,password_length){
 
         password += list_keywords[number]
     }
+    return password
 }
 
+let password_length = document.querySelector("#Plength");
+let btn = document.querySelector("#generate");
+let display_password = document.querySelector("#createdp");
+
+// console.log(password_length,btn,display_password)
+
+btn.addEventListener("click",function(){
+    
+    if(password_length.value!==null){
+        let Pvalue = password_length.value;
+        let password_generated = generateRandomPasswords(keywords,Pvalue);
+        // console.log(password_generated)
+        display_password.innerHTML = `<h5>Your password:</h5> ${password_generated}`;
+    }else{
+        alert("Password-length is missing")
+    }
+    password_length.value=""
+})
